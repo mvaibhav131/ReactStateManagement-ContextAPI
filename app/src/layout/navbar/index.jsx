@@ -1,7 +1,9 @@
 import React from 'react';
 import { Avatar, Breadcrumb, Layout, Menu, theme } from 'antd';
 import MainContent from '../../content';
+import "./index.css";
 const { Header, Content, Footer } = Layout;
+
 const items = new Array(1).fill(null).map((_, index) => ({
   key:"avatar",
   label:"Graphical View Dashboard",
@@ -12,15 +14,7 @@ const Navbar = () => {
   } = theme.useToken();
   return (
     <Layout>
-      <Header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
+      <Header className='navbar_header'
       >
         <div className="demo-logo" ><Avatar/></div>
         <Menu
@@ -33,37 +27,21 @@ const Navbar = () => {
             minWidth: 0,
           }}
         />
-        <Avatar/>
-      </Header>
-      <Content
-        style={{
-          padding: '0 48px',
-        }}
-      >
-        <Breadcrumb
-          style={{
-            margin: '16px 0',
-          }}
-        >
+        <Breadcrumb style={{background:"gray",padding:"5px", borderRadius:"5px"}} >
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
-        <div
-          style={{
-            padding: 24,
-            minHeight: 380,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
+      </Header>
+      <Content className='content'
+      >
+       
+        <div className='main_content'
         >
           <MainContent/>
         </div>
       </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
+      <Footer className='footers'
       >
         vaibhavmore.in ©{new Date().getFullYear()} Created by Vaibhav More
       </Footer>
