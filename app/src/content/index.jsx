@@ -1,4 +1,4 @@
-import { Button, Card, Col, Row } from 'antd';
+import { Button, Card, Col, Row, Typography } from 'antd';
 import React from 'react'
 import BarCharts from '../chart/bar';
 import AreaCharts from '../chart/area';
@@ -11,52 +11,57 @@ import RadialCharts from '../chart/radial';
 import ThreeDimScatterCharts from '../chart/pieangle';
 import ScatterCharts from '../chart/scatter';
 import TreeCharts from '../chart/treemap';
+import "./index.css";
+import { useTheme } from '../contextStore/themeContext';
+
 
 const MainContent = () => {
+  const {theme,toggleTheme}= useTheme();
+  console.log(theme,"jljlkj")
   return (
-    <div >
-      <Button type='primary' className='m-3'>Change Theme</Button>
-      <Row gutter={[16, 16]}>
+    <div className={theme==='dark' ? "app_dark" : "app_light"}>
+      <Button type='dashed'block className={` my-2 ${theme === 'dark' ? 'btn_dark' : 'btn_light'}`} onClick={toggleTheme}>Change Theme using ContextAPI</Button>
+      <Row gutter={[24, 24]}>
         <Col span={8} >
-          <Card className='mb-3 p-8' title="Pie Chart"><PieCharts/></Card>
+          <Card className={`mb-3 p-8 ${theme === 'dark' ? 'card_dark' : 'card_light'}`}  title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Pie Chart</Typography.Title>}><PieCharts/></Card>
         </Col>
         <Col span={8}>
-          <Card className='mb-3' title="Radial Chart"><RadialCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Radial Chart</Typography.Title>} ><RadialCharts/></Card>
         </Col>
         <Col span={8}>
-        <Card className='mb-3' title="Bar Chart"><BarCharts/></Card>
+        <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Bar Chart</Typography.Title>}><BarCharts/></Card>
         </Col>
       </Row>
       <Row gutter={[24, 24]}>
         <Col span={16}>
-        <Card className='mb-3' title="Compose Chart"><ComposedCharts/></Card>
+        <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Compose Chart</Typography.Title>}><ComposedCharts/></Card>
         </Col>
         <Col span={8}>
-          <Card className='mb-3' title="Custom Chart"><CustomCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Custom Chart</Typography.Title>}><CustomCharts/></Card>
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[24, 24]}>
       <Col span={8}>
-          <Card className='mb-3' title="Area Chart"><AreaCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Area Chart</Typography.Title>}><AreaCharts/></Card>
         </Col>
         <Col span={8}>
-          <Card className='mb-3' title="Line Chart"><LineCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Line Chart</Typography.Title>}><LineCharts/></Card>
         </Col>
         <Col span={8}>
-          <Card className='mb-3' title="Multiline Chart"><MultiLineCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>MultiLine Chart</Typography.Title>}><MultiLineCharts/></Card>
         </Col>
       </Row>
       <Row gutter={[24, 24]}>
         <Col span={8}>
-          <Card className='mb-3' title="Scatter Chart"><ScatterCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Scatter Chart</Typography.Title>}><ScatterCharts/></Card>
         </Col>
         <Col span={16}>
-          <Card className='mb-3' title="Tree Chart"><TreeCharts/></Card>
+          <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Tree Chart</Typography.Title>}><TreeCharts/></Card>
         </Col>
       </Row>
         <Row gutter={[16, 16]}>
         <Col span={16}>
-        <Card className='mb-3' title="Pie Angle Chart"><ThreeDimScatterCharts/></Card>
+        <Card className={`mb-3 ${theme === 'dark' ? 'card_dark' : 'card_light'}`} title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Pie Angle Chart</Typography.Title>}><ThreeDimScatterCharts/></Card>
         </Col>
         </Row> 
     </div>
