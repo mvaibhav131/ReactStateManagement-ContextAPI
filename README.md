@@ -1,4 +1,4 @@
-# ReactStateManagement-ContextAPI
+# _ReactStateManagement-ContextAPI_
  My simple Dashboard chart and it's theme changes using contextAPI state Management.
 
 ### first clone the above repository
@@ -6,7 +6,7 @@
 
 ## Start the app using command NPM START
 
-# Github deployment process
+# _Github deployment process_
 
 ## first install the gh-pages using NPM INSTALL gh-pages
 ## add homepage, predeploy and deploy in your package.json file
@@ -17,7 +17,7 @@
 ## then your application is live in your homepage url 
 ## go to your repository setting and pages section to find your deploy pages
 
-# CI-CD BUILD,TESTING,DEPLOYMENT process
+# _CI-CD BUILD,TESTING,DEPLOYMENT process_
 
 ## first add your main.yaml file in your repository
 ## specify the branch name that your final publish/updated branch
@@ -28,7 +28,7 @@
 ## now in github action you check your pipeline status log
 ## if you hit the latest changes in specified branch then your build,test,deploy process happens automatically
 
-# ENJOY CODING !!!!!
+# _ENJOY CODING_ !!!!!
 
 
 
