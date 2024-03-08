@@ -1,7 +1,9 @@
 import React from 'react';
 import { Avatar, Breadcrumb, Layout, Menu, theme } from 'antd';
+import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import MainContent from '../../content';
 import "./index.css";
+import { useTheme } from '../../contextStore/themeContext';
 const { Header, Content, Footer } = Layout;
 
 const items = new Array(1).fill(null).map((_, index) => ({
@@ -9,9 +11,8 @@ const items = new Array(1).fill(null).map((_, index) => ({
   label:"Graphical View Dashboard",
 }));
 const Navbar = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const {theme}= useTheme();
+ console.log(theme)
   return (
     <Layout>
       <Header className='navbar_header'
@@ -27,11 +28,26 @@ const Navbar = () => {
             minWidth: 0,
           }}
         />
-        <Breadcrumb style={{background:"gray",padding:"5px", borderRadius:"5px"}} >
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
+       <Breadcrumb style={{background:"gray",padding:"6px",borderRadius:"11px"}}
+    items={[
+      {
+        href: '',
+        title: <HomeOutlined />,
+      },
+      {
+        href: '',
+        title: (
+          <>
+            <UserOutlined />
+            <span>Dashboard</span>
+          </>
+        ),
+      },
+      {
+        title: `${theme ==="dark"? "Dark Theme":"Light Theme"}`,
+      },
+    ]}
+  />
       </Header>
       <Content className='content'
       >

@@ -1,0 +1,72 @@
+name: Build ,Testing & Deploy
+
+on:
+  push:
+    branches:
+      - main
+      
+env:
+  CI: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      # - name: Update Browserslist data
+      #   run: npx update-browserslist-db@latest
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Add @babel/plugin-proposal-private-property-in-object to devDependencies
+        run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+      - name: Install TypeScript
+        run: npm install typescript
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./build
+
+  testing:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run tests
+        run: npm install typescript 
+
+  deploy:
+    name: Deploy
+    needs: testing
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./build

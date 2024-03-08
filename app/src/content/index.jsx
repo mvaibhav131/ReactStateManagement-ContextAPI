@@ -17,10 +17,9 @@ import { useTheme } from '../contextStore/themeContext';
 
 const MainContent = () => {
   const {theme,toggleTheme}= useTheme();
-  console.log(theme,"jljlkj")
   return (
     <div className={theme==='dark' ? "app_dark" : "app_light"}>
-      <Button type='dashed'block className={` my-2 ${theme === 'dark' ? 'btn_dark' : 'btn_light'}`} onClick={toggleTheme}>Change Theme using ContextAPI</Button>
+      <Button type='dashed'block className={` my-4 ${theme === 'dark' ? 'btn_dark' : 'btn_light'}`} onClick={toggleTheme}>Change Theme using ContextAPI</Button>
       <Row gutter={[24, 24]}>
         <Col span={8} >
           <Card className={`mb-3 p-8 ${theme === 'dark' ? 'card_dark' : 'card_light'}`}  title={<Typography.Title level={4}  className={theme==="dark"?"text-light":"text-dark"}>Pie Chart</Typography.Title>}><PieCharts/></Card>
