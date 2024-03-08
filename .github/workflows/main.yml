@@ -17,13 +17,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      # - name: Update Browserslist data
-      #   run: npx update-browserslist-db@latest
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
+
+      - name: Change directory to app
+        run: cd app
 
       - name: Install dependencies
         run: npm install
@@ -49,8 +49,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Change directory to app
+        run: cd app
+
       - name: Run tests
-        run: npm install typescript 
+        run: npm install typescript
 
   deploy:
     name: Deploy
@@ -59,6 +65,12 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Change directory to app
+        run: cd app
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
@@ -70,3 +82,4 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build
+
