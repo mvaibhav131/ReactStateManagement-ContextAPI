@@ -59,7 +59,7 @@ const Navbar = () => {
       </Content>
       <Footer className='footers'
       >
-        vaibhavmore.in ©{new Date().getFullYear()} Created by Vaibhav More
+        <a href='https://vaibhavmore.in/'>vaibhavmore.in</a> ©{new Date().getFullYear()} Created by Vaibhav More
       </Footer>
     </Layout>
   );
