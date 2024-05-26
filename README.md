@@ -28,7 +28,7 @@
 ## now in github action you check your pipeline status log
 ## if you hit the latest changes in specified branch then your build,test,deploy process happens automatically
 
-# _ENJOY CODING_ !!!!!
+# _ENJOY CODING_ !!!
 
 
 
